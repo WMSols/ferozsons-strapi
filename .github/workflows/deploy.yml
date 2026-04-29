@@ -18,9 +18,18 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           # This is the sequence of commands GitHub types into your VPS terminal
           script: |
-            # CHANGE THIS to the actual path where your Strapi code lives on your server
+           # 1. Load Node/NPM/PM2 environment variables
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:/usr/local/bin:$HOME/.npm-global/bin
+            
+            # 2. Go to your Strapi directory
             cd /home/strapi/htdocs/srv1615764.hstgr.cloud 
             
+            # 3. Whitelist the directory to fix the Git "dubious ownership" error
+            git config --global --add safe.directory /home/strapi/htdocs/srv1615764.hstgr.cloud
+            
+            # 4. Run the deployment
             git pull origin main
             npm install
             npm run build
