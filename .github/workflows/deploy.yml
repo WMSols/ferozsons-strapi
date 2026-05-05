@@ -1,0 +1,38 @@
+name: Deploy Strapi to Hostinger VPS
+
+# This triggers the deployment ONLY when you push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH into VPS and Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          # This is the sequence of commands GitHub types into your VPS terminal
+          script: |
+            # 1. Load Node/NPM/PM2 environment variables
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:/usr/local/bin:$HOME/.npm-global/bin
+            
+            # 2. Go to your Strapi directory
+            cd /home/strapi/htdocs/srv1615764.hstgr.cloud 
+            
+            # 3. Whitelist the directory
+            git config --global --add safe.directory /home/strapi/htdocs/srv1615764.hstgr.cloud
+            
+            # 4. Run the deployment
+            git pull origin main
+            npm install
+            npm run build
+            
+            # 5. Smart PM2 Start/Restart
+            pm2 describe strapi > /dev/null && pm2 restart strapi || pm2 start npm --name "strapi" -- run start
