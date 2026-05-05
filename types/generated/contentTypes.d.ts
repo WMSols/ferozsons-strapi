@@ -465,6 +465,38 @@ export interface ApiContactMessageContactMessage
   };
 }
 
+export interface ApiFinancialHighlightFinancialHighlight
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'financial_highlights';
+  info: {
+    displayName: 'Financial Highlight';
+    pluralName: 'financial-highlights';
+    singularName: 'financial-highlight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eps: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::financial-highlight.financial-highlight'
+    > &
+      Schema.Attribute.Private;
+    marketCap: Schema.Attribute.String;
+    netProfit: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    revenue: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiInvestorReportInvestorReport
   extends Struct.CollectionTypeSchema {
   collectionName: 'investor_reports';
@@ -1229,6 +1261,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::contact-message.contact-message': ApiContactMessageContactMessage;
+      'api::financial-highlight.financial-highlight': ApiFinancialHighlightFinancialHighlight;
       'api::investor-report.investor-report': ApiInvestorReportInvestorReport;
       'api::job-application.job-application': ApiJobApplicationJobApplication;
       'api::job-post.job-post': ApiJobPostJobPost;
