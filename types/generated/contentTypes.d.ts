@@ -480,6 +480,7 @@ export interface ApiFinancialHighlightFinancialHighlight
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
     eps: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -685,17 +686,20 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   attributes: {
     availableOnline: Schema.Attribute.Boolean;
     commonlyPrescribed: Schema.Attribute.Boolean;
-    concentration: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
-    dosage: Schema.Attribute.String;
     dvagoUrl: Schema.Attribute.Text;
     faqFile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     formulation: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     instructionsFile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    isFaqAvailable: Schema.Attribute.Boolean;
+    isInstructionAvailable: Schema.Attribute.Boolean;
+    leafletFile: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -705,16 +709,15 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    pamphletFile: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     prescriptionRequired: Schema.Attribute.Boolean;
+    presentation: Schema.Attribute.String;
     product_category: Schema.Attribute.Relation<
       'oneToOne',
       'api::product-category.product-category'
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    strength: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

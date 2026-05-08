@@ -22,10 +22,10 @@
     "formulation": {
       "type": "string"
     },
-    "concentration": {
+    "presentation": {
       "type": "string"
     },
-    "dosage": {
+    "strength": {
       "type": "string"
     },
     "commonlyPrescribed": {
@@ -70,6 +70,16 @@
     },
     "faqFile": {
       "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "isFaqAvailable"
+            },
+            true
+          ]
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "images",
@@ -80,6 +90,16 @@
     },
     "instructionsFile": {
       "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "isInstructionAvailable"
+            },
+            true
+          ]
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "images",
@@ -88,7 +108,7 @@
         "audios"
       ]
     },
-    "pamphletFile": {
+    "leafletFile": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -97,6 +117,12 @@
         "videos",
         "audios"
       ]
+    },
+    "isFaqAvailable": {
+      "type": "boolean"
+    },
+    "isInstructionAvailable": {
+      "type": "boolean"
     }
   }
 }
