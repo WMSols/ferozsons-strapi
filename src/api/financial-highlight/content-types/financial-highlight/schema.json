@@ -22,6 +22,9 @@
     },
     "marketCap": {
       "type": "string"
+    },
+    "date": {
+      "type": "date"
     }
   }
 }
