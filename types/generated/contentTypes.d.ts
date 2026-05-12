@@ -430,6 +430,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBoardOfDirectorBoardOfDirector
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'board_of_directors';
+  info: {
+    displayName: 'Board of Director';
+    pluralName: 'board-of-directors';
+    singularName: 'board-of-director';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::board-of-director.board-of-director'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String;
+    sortNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactMessageContactMessage
   extends Struct.CollectionTypeSchema {
   collectionName: 'contact_messages';
@@ -521,6 +552,8 @@ export interface ApiInvestorReportInvestorReport
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     quarter: Schema.Attribute.String;
+    quarterNo: Schema.Attribute.Enumeration<['q1', 'q2', 'q3', 'q4']> &
+      Schema.Attribute.Required;
     report_file: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -623,6 +656,7 @@ export interface ApiNewsroomNewsroom extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
     featured_image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -636,6 +670,38 @@ export interface ApiNewsroomNewsroom extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPharmaceuticalAreaPharmaceuticalArea
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pharmaceutical_areas';
+  info: {
+    displayName: 'Pharmaceutical Area';
+    pluralName: 'pharmaceutical-areas';
+    singularName: 'pharmaceutical-area';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pharmaceutical-area.pharmaceutical-area'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    sortNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1263,12 +1329,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::board-of-director.board-of-director': ApiBoardOfDirectorBoardOfDirector;
       'api::contact-message.contact-message': ApiContactMessageContactMessage;
       'api::financial-highlight.financial-highlight': ApiFinancialHighlightFinancialHighlight;
       'api::investor-report.investor-report': ApiInvestorReportInvestorReport;
       'api::job-application.job-application': ApiJobApplicationJobApplication;
       'api::job-post.job-post': ApiJobPostJobPost;
       'api::newsroom.newsroom': ApiNewsroomNewsroom;
+      'api::pharmaceutical-area.pharmaceutical-area': ApiPharmaceuticalAreaPharmaceuticalArea;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::product.product': ApiProductProduct;
       'api::report-type.report-type': ApiReportTypeReportType;
