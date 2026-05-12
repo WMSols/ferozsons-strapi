@@ -41,6 +41,10 @@
         "videos",
         "audios"
       ]
+    },
+    "date": {
+      "type": "date",
+      "required": true
     }
   }
 }

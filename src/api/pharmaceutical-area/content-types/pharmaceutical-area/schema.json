@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pharmaceutical_areas",
+  "info": {
+    "singularName": "pharmaceutical-area",
+    "pluralName": "pharmaceutical-areas",
+    "displayName": "Pharmaceutical Area"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "sortNumber": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

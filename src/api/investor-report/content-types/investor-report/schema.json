@@ -39,6 +39,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::report-type.report-type"
+    },
+    "quarterNo": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ]
     }
   }
 }
