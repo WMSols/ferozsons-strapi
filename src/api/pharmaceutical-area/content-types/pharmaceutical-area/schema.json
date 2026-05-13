@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pharmaceutical-area",
     "pluralName": "pharmaceutical-areas",
-    "displayName": "Pharmaceutical Area"
+    "displayName": "Therapeutic Area"
   },
   "options": {
     "draftAndPublish": true
@@ -31,6 +31,12 @@
     "sortNumber": {
       "type": "integer",
       "required": true
+    },
+    "product_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-category.product-category",
+      "mappedBy": "therapeutic_area"
     }
   }
 }

@@ -544,6 +544,7 @@ export interface ApiInvestorReportInvestorReport
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -680,7 +681,7 @@ export interface ApiPharmaceuticalAreaPharmaceuticalArea
   extends Struct.CollectionTypeSchema {
   collectionName: 'pharmaceutical_areas';
   info: {
-    displayName: 'Pharmaceutical Area';
+    displayName: 'Therapeutic Area';
     pluralName: 'pharmaceutical-areas';
     singularName: 'pharmaceutical-area';
   };
@@ -699,6 +700,10 @@ export interface ApiPharmaceuticalAreaPharmaceuticalArea
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    product_categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-category.product-category'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     sortNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
@@ -733,6 +738,10 @@ export interface ApiProductCategoryProductCategory
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    therapeutic_area: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::pharmaceutical-area.pharmaceutical-area'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

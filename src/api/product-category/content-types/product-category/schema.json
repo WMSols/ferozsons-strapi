@@ -20,6 +20,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "therapeutic_area": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pharmaceutical-area.pharmaceutical-area",
+      "inversedBy": "product_categories"
     }
   }
 }
