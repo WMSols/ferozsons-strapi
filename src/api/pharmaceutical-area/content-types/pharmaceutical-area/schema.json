@@ -4,7 +4,7 @@
   "info": {
     "singularName": "pharmaceutical-area",
     "pluralName": "pharmaceutical-areas",
-    "displayName": "Therapeutic Area"
+    "displayName": "Therapeutic Areas"
   },
   "options": {
     "draftAndPublish": true

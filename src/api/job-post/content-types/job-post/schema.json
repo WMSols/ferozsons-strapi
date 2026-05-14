@@ -4,7 +4,7 @@
   "info": {
     "singularName": "job-post",
     "pluralName": "job-posts",
-    "displayName": "Job Post"
+    "displayName": "Job Posts"
   },
   "options": {
     "draftAndPublish": true

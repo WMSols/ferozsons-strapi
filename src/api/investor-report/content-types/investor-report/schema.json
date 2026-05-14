@@ -4,7 +4,7 @@
   "info": {
     "singularName": "investor-report",
     "pluralName": "investor-reports",
-    "displayName": "Investor Report"
+    "displayName": "Investor Reports"
   },
   "options": {
     "draftAndPublish": true

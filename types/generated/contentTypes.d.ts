@@ -434,7 +434,7 @@ export interface ApiBoardOfDirectorBoardOfDirector
   extends Struct.CollectionTypeSchema {
   collectionName: 'board_of_directors';
   info: {
-    displayName: 'Board of Director';
+    displayName: 'Board of Directors';
     pluralName: 'board-of-directors';
     singularName: 'board-of-director';
   };
@@ -500,7 +500,7 @@ export interface ApiFinancialHighlightFinancialHighlight
   extends Struct.CollectionTypeSchema {
   collectionName: 'financial_highlights';
   info: {
-    displayName: 'Financial Highlight';
+    displayName: 'Financial Highlights';
     pluralName: 'financial-highlights';
     singularName: 'financial-highlight';
   };
@@ -533,7 +533,7 @@ export interface ApiInvestorReportInvestorReport
   extends Struct.CollectionTypeSchema {
   collectionName: 'investor_reports';
   info: {
-    displayName: 'Investor Report';
+    displayName: 'Investor Reports';
     pluralName: 'investor-reports';
     singularName: 'investor-report';
   };
@@ -575,7 +575,7 @@ export interface ApiJobApplicationJobApplication
   extends Struct.CollectionTypeSchema {
   collectionName: 'job_applications';
   info: {
-    displayName: 'Job Application';
+    displayName: 'Job Applications';
     pluralName: 'job-applications';
     singularName: 'job-application';
   };
@@ -607,7 +607,7 @@ export interface ApiJobApplicationJobApplication
 export interface ApiJobPostJobPost extends Struct.CollectionTypeSchema {
   collectionName: 'job_posts';
   info: {
-    displayName: 'Job Post';
+    displayName: 'Job Posts';
     pluralName: 'job-posts';
     singularName: 'job-post';
   };
@@ -681,7 +681,7 @@ export interface ApiPharmaceuticalAreaPharmaceuticalArea
   extends Struct.CollectionTypeSchema {
   collectionName: 'pharmaceutical_areas';
   info: {
-    displayName: 'Therapeutic Area';
+    displayName: 'Therapeutic Areas';
     pluralName: 'pharmaceutical-areas';
     singularName: 'pharmaceutical-area';
   };
@@ -717,7 +717,7 @@ export interface ApiProductCategoryProductCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'product_categories';
   info: {
-    displayName: 'Product Category';
+    displayName: 'Product Categories';
     pluralName: 'product-categories';
     singularName: 'product-category';
   };
@@ -751,7 +751,7 @@ export interface ApiProductCategoryProductCategory
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
-    displayName: 'Product';
+    displayName: 'Products';
     pluralName: 'products';
     singularName: 'product';
   };
@@ -802,7 +802,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
 export interface ApiReportTypeReportType extends Struct.CollectionTypeSchema {
   collectionName: 'report_types';
   info: {
-    displayName: 'Report Type';
+    displayName: 'Report Types';
     pluralName: 'report-types';
     singularName: 'report-type';
   };
